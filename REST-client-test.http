@@ -1,0 +1,77 @@
+http://localhost:8080/
+
+http://localhost:8080/artists-jdbc/search/
+
+http://localhost:8080/artists-jpa/search/
+
+# test below http request at VS Code with REST Client extension
+
+http://localhost:8080/artists-jpa/102
+
+# HTTP 200 - by id
+
+http://localhost:8080/artists-jdbc/102
+
+# HTTP 200 - by id
+
+http://localhost:8080/artists-jpa/search/by-email?email=555@email.com
+
+# HTTP 200
+
+http://localhost:8080/artists-jpa/search/by-email-nq?email=555@email.com
+
+# HTTP 500
+# show exception in log
+# ERROR --- o.h.engine.jdbc.spi.SqlExceptionHelper   : Operand type clash: varchar(13) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db') collation_name = 'SQL_Latin1_General_CP1_CI_AS' is incompatible with nvarchar(50) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db')
+
+http://localhost:8080/artists-jpa/search/by-email-custom?email=555@email.com
+
+# HTTP 200
+
+http://localhost:8080/artists-jdbc/search/by-email?email=555@email.com
+
+# HTTP 500
+# show exception in log
+# ... SQL state [S0002]; error code [402]; The data types nvarchar(50) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db') and varchar(13) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db') collation_name = 'SQL_Latin1_General_CP1_CI_AS' are incompatible in the equal to operator.;
+
+http://localhost:8080/artists-jdbc/search/by-email-nq?email=555@email.com
+
+# HTTP 500
+# ... SQL state [S0002]; error code [402]; The data types nvarchar(50) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db') and varchar(13) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db') collation_name = 'SQL_Latin1_General_CP1_CI_AS' are incompatible in the equal to operator.;
+
+http://localhost:8080/artists-jdbc/search/by-email-custom?email=555@email.com
+
+# HTTP 200
+
+POST http://localhost:8080/artists-jpa/ HTTP/1.1
+content-type: application/json
+
+{
+    "artistId": 108,
+    "payToken": 888,
+    "email": "888@email.com",
+    "phone": "888-11111-11   ",
+    "firstName": "FNAME-888",
+    "lastName": "LNAME_888",
+    "city": "CITY-08",
+    "birthDate": "1998-08-08"
+}
+
+# HTTP 201
+
+POST http://localhost:8080/artists-jdbc/ HTTP/1.1
+content-type: application/json
+
+{
+    "artistId": 109,
+    "payToken": 999,
+    "email": "999@email.com",
+    "phone": "999-11111-11   ",
+    "firstName": "FNAME-999",
+    "lastName": "LNAME_999",
+    "city": "CITY-09",
+    "birthDate": "1999-09-09"
+}
+
+# HTTP 500
+# com.microsoft.sqlserver.jdbc.SQLServerException: Operand type clash: varchar(13) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db') collation_name = 'SQL_Latin1_General_CP1_CI_AS' is incompatible with nvarchar(50) encrypted with (encryption_type = 'DETERMINISTIC', encryption_algorithm_name = 'AEAD_AES_256_CBC_HMAC_SHA_256', column_encryption_key_name = 'CEK_Auto1', column_encryption_key_database_name = 'album-db')
