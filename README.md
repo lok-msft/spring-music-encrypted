@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/lok-msft/spring-music-always-encrypted">
-    <img src="images/springboot-logo-only.png" alt="Spring" width="80" height="80">
+    <img src="images/springboot-logo-only.png" alt="Spring Boot" width="80"> <img src="images/azure-logo.jpg" alt="Azure" width="80"> <img src="images/azure-sql-logo.png" alt="Azure" width="80">
   </a>
 
   <h3 align="center">Spring Data JPA vs Spring Data JDBC, for Always-Encrypted column in Azure SQL</h3>
@@ -50,22 +50,23 @@
 To show what's the expected behaviour when leveraging Spring Boot + Spring Data (Repository):
 * [Spring Data JPA](https://spring.io/projects/spring-data-jpa) vs
 * [Spring Data JDBC](https://spring.io/projects/spring-data-jdbc)
+
 to query Azure SQL DB with always-encrypted columns 
 
 Here's highlight:
-* CRUD Repository with always-encrypted columns - no @Query
-* Custom query with named paramter - making use of @Query
-* Show potential exception we may come across when using @Query
+* CRUD Repository with always-encrypted columns --> not using any @Query
+* Custom query with named paramter --> making use of @Query
+* Potential exception that it may throw, when using @Query
 
 Please read this doc about SQL Server JDBC driver [unsupported-data-type-conversion-errors](https://docs.microsoft.com/en-us/sql/connect/jdbc/using-always-encrypted-with-the-jdbc-driver?view=sql-server-ver16#unsupported-data-type-conversion-errors)
 
-See expected response/exception in [REST-client-test.http](REST-client-test.http)
+_Also you can check out the expected response/exception in the file [REST-client-test.http](REST-client-test.http)_
 
 ** Focus on giving you some ideas about various Spring Data (Repository) behaviour when handling always-encrypted columns
 
 ** DO NOT take this codebase as a production-ready release, you may need extra consideration about performance optimization and security measure fit your project and organization specific requirement
 
-For how to run query at SSMS for table with encrypted column, please refer to this [blog:  parameterization-for-always-encrypted-using-ssms](https://techcommunity.microsoft.com/t5/azure-sql-blog/parameterization-for-always-encrypted-using-ssms-to-insert-into/ba-p/386124)
+For how to run query at SSMS for table with encrypted column, please refer to this blog post  [parameterization-for-always-encrypted-using-ssms](https://techcommunity.microsoft.com/t5/azure-sql-blog/parameterization-for-always-encrypted-using-ssms-to-insert-into/ba-p/386124)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -77,9 +78,9 @@ Key dependencies used to bootstrap the project:
 
 * spring-boot-starter-data-jpa
 * spring-boot-starter-data-jdbc
-* azure-identity _runtime only_
-* azure-security-keyvault-keys _runtime only_
-* mssql-jdbc _runtime only_
+* azure-identity _//runtime only_
+* azure-security-keyvault-keys _//runtime only_
+* mssql-jdbc _//runtime only_
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -132,7 +133,7 @@ tools and runtime needed before you can build and run the sample:
 * An Azure account and subscription. If you don't have one, sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
 * A database in Azure SQL Database or Azure SQL Managed Instance
 * permission for Azure Key Vault - create relevant keys for always-encrypted
-* permission for Azure Active Directory (Azure AD) - create service principal for the app to access key vault
+* permission to register app on Azure Active Directory (Azure AD) - for app to access key vault
 * Azure App Service / AKS - potentially running this app on Azure instead of desktop localhost
 
 ### Installation

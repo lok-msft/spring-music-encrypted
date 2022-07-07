@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>demo.az</groupId>
-	<artifactId>spring-music-always-encrypted</artifactId>
+	<artifactId>spring-music-encrypted</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-music-always-encrypted</name>
+	<name>spring-music-encrypted</name>
 	<description>Demo project for Spring Boot plus Azure SQL Always-Encrypted</description>
 	<properties>
 		<java.version>11</java.version>
