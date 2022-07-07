@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/lok-msft/spring-music-always-encrypted">
-    <img src="images/springboot-logo-only.png" alt="Spring Boot" width="80"> <img src="images/azure-logo.jpg" alt="Azure" width="80"> <img src="images/azure-sql-logo.png" alt="Azure" width="80">
+    <img src="images/springboot-logo-only.png" alt="Spring Boot" height="80"> <img src="images/azure-logo.jpg" alt="Azure" height="80"> <img src="images/azure-sql-logo.png" alt="Azure" height="80">
   </a>
 
   <h3 align="center">Spring Data JPA vs Spring Data JDBC, for Always-Encrypted column in Azure SQL</h3>
@@ -106,6 +106,8 @@ Assuming you have some Azure SQL DB up and running
         [BirthDate] [date] NOT NULL,
         PRIMARY KEY CLUSTERED ([ArtistId] ASC) ON [PRIMARY] );
   ```
+
+<img src="images/table-with-always-encrypted-column.jpg" alt="SSMS view" width="600">
 
 * git clone this repo or just copy source code to a new project created by template from [start.spring.io](https://start.spring.io/)
 
