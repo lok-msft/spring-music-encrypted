@@ -22,6 +22,11 @@ public interface RepoArtistJPA extends JpaRepository<EntityArtistJPA, Integer>, 
     @RestResource(path = "by-email")
     List<EntityArtistJPA> findByEmail(@Param("email") String email);
 
+    // By JPQL
+    @RestResource(path = "by-email-jpql")
+    @Query("select a from EntityArtistJPA a where a.email = :email")
+    List<Object> findByEmailJPQL(@Param("email") String email);
+
     //!!! THIS WON'T WORK !!!
     //because the DB column type (always-encrypted) is not matching the default SQL type underlying JPA/hibernate making use of, when setParameter for the query
     //refer to doc https://docs.microsoft.com/en-us/sql/connect/jdbc/using-always-encrypted-with-the-jdbc-driver?view=sql-server-ver16#unsupported-data-type-conversion-errors

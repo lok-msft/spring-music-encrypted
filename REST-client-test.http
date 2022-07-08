@@ -6,15 +6,21 @@ http://localhost:8080/artists-jpa/search/
 
 # test below http request at VS Code with REST Client extension
 
-http://localhost:8080/artists-jpa/102
+#below request assuming you have create a record with id 105 and email 555@email.com
+
+http://localhost:8080/artists-jpa/105
 
 # HTTP 200 - by id
 
-http://localhost:8080/artists-jdbc/102
+http://localhost:8080/artists-jdbc/105
 
 # HTTP 200 - by id
 
 http://localhost:8080/artists-jpa/search/by-email?email=555@email.com
+
+# HTTP 200
+
+http://localhost:8080/artists-jpa/search/by-email-jpql?email=555@email.com
 
 # HTTP 200
 
@@ -42,6 +48,22 @@ http://localhost:8080/artists-jdbc/search/by-email-nq?email=555@email.com
 http://localhost:8080/artists-jdbc/search/by-email-custom?email=555@email.com
 
 # HTTP 200
+
+POST http://localhost:8080/artists-jpa/ HTTP/1.1
+content-type: application/json
+
+{
+    "artistId": 105,
+    "payToken": 555,
+    "email": "555@email.com",
+    "phone": "555-11111-11   ",
+    "firstName": "FNAME-555",
+    "lastName": "LNAME_555",
+    "city": "CITY-05",
+    "birthDate": "1995-05-05"
+}
+
+# HTTP 201
 
 POST http://localhost:8080/artists-jpa/ HTTP/1.1
 content-type: application/json
